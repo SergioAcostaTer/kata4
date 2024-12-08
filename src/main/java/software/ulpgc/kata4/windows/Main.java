@@ -2,9 +2,10 @@ package software.ulpgc.kata4.windows;
 
 import software.ulpgc.kata4.architecture.*;
 import software.ulpgc.kata4.architecture.charts.Barchart;
+import software.ulpgc.kata4.architecture.deserializer.TsvTitleDeserializer;
 import software.ulpgc.kata4.architecture.io.FileTitleLoader;
 import software.ulpgc.kata4.architecture.io.ResetZoomCommand;
-import software.ulpgc.kata4.architecture.deserializer.TsvTitleDeserializer;
+import software.ulpgc.kata4.architecture.io.TitleLoaderDb;
 
 import java.io.File;
 import java.io.IOException;
@@ -14,8 +15,7 @@ import java.util.Map;
 
 public class Main {
     public static void main(String[] args) throws IOException {
-        File file = new File("C:\\\\Users\\\\Sergio\\\\Desktop\\\\ULPGC\\\\is2\\\\imdb\\\\title.basics.tsv");
-        List<Title> titles = new FileTitleLoader(file, new TsvTitleDeserializer()).load();
+        List<Title> titles = new TitleLoaderDb("C:\\\\Users\\\\Sergio\\\\Desktop\\\\ULPGC\\\\is2\\\\imdb\\\\imdb_titles.db").load();
 
         Map<String, Integer> stats = new LinkedHashMap<>();
         stats.put("0-30", 0);
